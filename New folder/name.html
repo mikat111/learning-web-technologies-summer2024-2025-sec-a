@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Name validation</title>
+</head>
+<body>
+    <h2>name</h2>
+<form onsubmit="return validation()">
+    <input type ="text"  id="name"/>
+    <p id="nameerror"></p>
+    <input type="submit" value="Submit"/>
+
+</form>
+<script>
+    function validation()
+     {
+        let name = document.getElementById("name").value;
+        let error = document.getElementById("nameerror");
+
+        if (name=== "")
+    {error.innerHTML="NAME CANNOT BE EMPTY";
+    return false;
+
+    }
+     let words = name.split(" ");
+     let validwords=0;
+     for (let w of words){
+        if (w!== "") validwords++;
+     }
+     if (validwords<2)
+     {error.innerHTML = "name must contain at least 2 words"
+        return false;
+     }
+     let firstChar= name[0];
+     if (!((firstChar >= 'A' && firstChar <= 'Z') || (firstChar >= 'a'&& firstChar <= 'z')))
+     {
+        error.innerHTML = "name must start with a letter"
+        return false; 
+     }
+        for (let i = 0; i <name.length; i++)
+     {
+        let ch = name[i];
+        if (!((ch >= 'A' && ch  <= 'Z')||
+              ( ch >= 'a' && ch  <= 'z')||
+            ch === '.' || ch ==='-'|| ch ===' ')){
+              error.innerHTML = "only letters dot(.), dash(-) allowed";
+              return false;
+            }
+     }
+     errorinnerHTML = "";
+     return true;
+    }
+</script>
+</body>
+</html>
