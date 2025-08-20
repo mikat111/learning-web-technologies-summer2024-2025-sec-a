@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Profile Picture</title>
+</head>
+<body>
+    <h2>Upload Profile Picture</h2>
+    <form onsubmit="return validationProfilePicture()">
+        <input type="file" id="profilePicture" accept="image/*" />
+        <p id="profilePictureError"></p>
+        <input type="submit" value="Submit" />
+    </form>
+    <script>
+        function validationProfilePicture() {
+            let profilePicture = document.getElementById("profilePicture").value;
+            let error = document.getElementById("profilePictureError");
+            if (profilePicture === "") {
+                error.innerHTML = "Please upload a profile picture.";
+                return false;
+            }
+            error.innerHTML = "";
+            return true;
+        }
+    </script>
+</body>
+</html>

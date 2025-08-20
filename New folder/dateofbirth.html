@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+   
+    <title>Date of Birth</title>
+</head>
+<body>
+     <h2>Date of Birth Validation</h2>
+     <form onsubmit="return validationDOB()">
+         <label for="dob">Date of Birth:</label>
+         <input type="date" id="dob" />
+         <p id="doberror"></p>
+         <input type="submit" value="Submit"/>
+        </form>
+        <script>
+            function validationDOB() {
+                let dob = document.getElementById("dob").value;
+                let error = document.getElementById("doberror");
+                
+                if (dob === ""){
+                    error.innerHTML = "date of birth cannot be empty";
+                    return false;
+                }
+                let parts = dob.split("-");
+                let year = parseInt(parts[0]);
+                let month = parseInt(parts[1]);
+                let day = parseInt(parts[2]);
+
+                if (year < 1900 || year > 2016) {
+                error.innerHTML = "Year must be between 1900 and 2016";
+                    return false;
+                }
+                if (month < 1 || month > 12) {
+                    error.innerHTML = "month must be between 1 and 12";
+                    return false;
+                }
+                if (day < 1 || day > 31) {
+                    error.innerHTML = "day must be between 1 and 31";
+                    return false;
+                }
+                
+                error.innerHTML = "";
+                return true;            
+            }
+        </script>
+</body>
+</html>
